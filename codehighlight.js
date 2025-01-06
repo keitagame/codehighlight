@@ -1,6 +1,7 @@
 function highlight(code){
   
   const patterns = {
+   name: /\b[a-zA-Z_]/g,
    be: /\b[a-zA-Z_]\w*(?=\s*=\s*)/g,
     beforeDot: /\b[a-zA-Z_]\w*(?=\.)/g, 
    afDot: /(?<=\.)\b[a-zA-Z_]\w*\b/g,
@@ -17,6 +18,7 @@ function highlight(code){
 let variableNames = [];
  
   let highlightedCode = code.textContent
+   
     .replace(patterns.string, '<span style ="color: #ff00ff;">$&</span>')
    .replace(patterns.functions, '<span style ="color: #c000ff;">$&</span>')
    .replace(patterns.r, '<span style ="color: #c0ff00;">$&</span>')
@@ -24,6 +26,7 @@ let variableNames = [];
     .replace(patterns.const, '<span style ="color: orange;">$&</span>')
    .replace(patterns.let, '<span style ="color: red;">$&</span>')
      .replace(patterns.beforeDot, '<span style ="color: red;">$&</span>')
+    
     .replace(patterns.var, '<span style ="color: green;">$&</span>')
      .replace(patterns.d, '<span style ="color: blue;">$&</span>')
     .replace(patterns.afDot, '<span style ="color: #00ff00;">$&</span>')
